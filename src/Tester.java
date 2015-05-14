@@ -23,7 +23,7 @@ public class Tester {
 	private static Sequencer createTester() {
 		return new Sequencer(
 				new PrintItemBadName(.01), 
-				new SequencedMultibleItemEachStopWhenFinished(
+				new SequencedMultibleItem(
 						new PrintItemBadName(1), 
 						new PrintItemBadName(3)
 					)

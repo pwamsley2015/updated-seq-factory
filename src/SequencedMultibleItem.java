@@ -1,12 +1,20 @@
 
-public class SequencedMultibleItemEachStopWhenFinished implements SequencedItem {
+/**
+ * Runs any number of <code>SequencedItems</code> in pararrel. 
+ * Each Item stops running when its own duration finishes. 
+ * 
+ * @author Patrick Wamsley
+ * @author Bryce Matsumori 
+ */
+
+public class SequencedMultibleItem implements SequencedItem {
 
 	private SequencedItem[] items; 
 	private long startTime;
 
 	private boolean firstRun; 
 
-	public SequencedMultibleItemEachStopWhenFinished(SequencedItem... items) {
+	public SequencedMultibleItem(SequencedItem... items) {
 		this.items 		= items; 
 		this.firstRun	= true; 
 	}
@@ -26,7 +34,7 @@ public class SequencedMultibleItemEachStopWhenFinished implements SequencedItem 
 			if (curr == null)
 				continue; 
 
-			//need to garentee the last item runs its finish method before the multi item times out
+			//hack to garentee the last item runs its finish method before the multi item times out
 			if (currItemIndex == items.length - 1 && 
 					System.currentTimeMillis() - startTime + 20 >= curr.duration() * 1000) { //one iritation before the multi item stops
 				curr.finish();
@@ -56,6 +64,9 @@ public class SequencedMultibleItemEachStopWhenFinished implements SequencedItem 
 		return max; 
 	}
 
+	/**
+	 * This does nothing, however each SequencedItem inside will call its finish method when its duration expires. 
+	 */
 	@Override
 	public void finish() {}
 }

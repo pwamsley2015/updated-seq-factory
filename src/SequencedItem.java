@@ -32,6 +32,14 @@ public interface SequencedItem {
      */
     public double duration();
     
+    /**
+     * This method is called when an item finishes running. This can be used to prevent "phatom PID", 
+     * make sure speed controllers are reset, for debugging, etc. It can also be left blank. 
+     * 
+     * In a <code>SequencedMultibleItem</code> each item calls its finish method when it expires inside the multible item. 
+     * 
+     * @see Sequencer 
+     */
     public void finish(); 
     
 }
