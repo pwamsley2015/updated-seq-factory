@@ -83,6 +83,6 @@ public class SequencedMultibleItem implements SequencedItem {
 	@Override
 	public void finish() {
 		if (name != null) 
-			System.out.println("SequencedMultibleItem: " + name + "has finished.");
+			System.out.println("SequencedMultibleItem: " + name + " has finished.");
 	}
 }
