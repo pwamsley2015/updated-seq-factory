@@ -1,3 +1,4 @@
+package org.usfirst.frc.team2485.auto;
 
 
 /**
@@ -8,6 +9,7 @@
  * 
  * If the item should only be run once, the duration should be set to -1.
  * @author Bryce Matsumori
+ * @author Patrick Wamsley
  *
  * @see Sequencer
  */

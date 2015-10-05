@@ -1,3 +1,4 @@
+package org.usfirst.frc.team2485.auto;
 
 public class Tester {
 	
@@ -26,7 +27,8 @@ public class Tester {
 				new SequencedMultibleItem(
 						new PrintItemBadName(1), 
 						new PrintItemBadName(3)
-					)
+					), 
+				new PrintItemBadName(.1)
 		); 
 	}
 

@@ -1,7 +1,12 @@
+package org.usfirst.frc.team2485.auto;
 
 /**
  * Runs any number of <code>SequencedItems</code> in pararrel. 
- * Each Item stops running when its own duration finishes. 
+ * Each Item stops running when its own duration finishes. <br>
+ *
+ * This class has an empty <code>finish()</code> method, however
+ * each SequencedItem inside the <code>SequencedMultibleItem</code> will 
+ * call its <code>finish()</code> method when its duration expires. 
  * 
  * @author Patrick Wamsley
  * @author Bryce Matsumori 
@@ -14,9 +19,16 @@ public class SequencedMultibleItem implements SequencedItem {
 
 	private boolean firstRun; 
 
-	public SequencedMultibleItem(SequencedItem... items) {
+	private String name; 
+	
+	public SequencedMultibleItem(String name, SequencedItem... items) {
+		this.name 		= name; 
 		this.items 		= items; 
 		this.firstRun	= true; 
+	}
+	
+	public SequencedMultibleItem(SequencedItem... items) {
+		this(null, items); 
 	}
 
 	@Override
@@ -66,7 +78,11 @@ public class SequencedMultibleItem implements SequencedItem {
 
 	/**
 	 * This does nothing, however each SequencedItem inside will call its finish method when its duration expires. 
+	 * If this SequencedMultibleItem is named, then a message will print telling that it has finished. This can be used for debugging.
 	 */
 	@Override
-	public void finish() {}
+	public void finish() {
+		if (!(name == null)) 
+			System.out.println("SequencedMultibleItem: " + name + "has finished.");
+	}
 }
